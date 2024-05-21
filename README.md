@@ -224,7 +224,7 @@ For an example of how to do this, please visit the [Poison demo site](https://po
 First, clone this repository into your `themes` directory:
 
 ```sh
-git clone https://github.com/lukeorth/poison.git themes/poison --depth=1
+git clone https://github.com/dbdness/dannys-poison.git themes/poison --depth=1
 ```
 
 Next, specify `poison` as the default theme in your config.toml file by adding the following line:
