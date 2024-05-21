@@ -17,6 +17,7 @@
     {{ else if .Site.DisqusShortname }}
         {{ template "_internal/disqus.html" . }}
     {{ else if .Site.Params.giscus}}
+        <div id="giscus"></div>
         <script>
             let giscusParams = {
                 {{ range $key, $value := .Site.Params.giscus }}
@@ -38,7 +39,7 @@
                 giscusScript.setAttribute('data-' + key, giscusParams[key]);
             }
     
-            document.body.appendChild(giscusScript);
+            document.getElementById('giscus').replaceWith(giscusScript);
         </script>
     {{ end }}
 </div>
