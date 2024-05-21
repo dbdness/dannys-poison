@@ -18,22 +18,39 @@ if (currentTheme == "dark") {
 
 btn.addEventListener("click", function () {
     document.body.classList.toggle("dark-theme");
-    let hasComments = document.getElementById("remark42");
+    let hasRemarkComments = document.getElementById("remark42");
+    let hasGiscusComments = document.querySelector(".giscus");
     let theme = "light";
 
     if (document.body.classList.contains("dark-theme")) {
         theme = "dark";
         moon.style.display = 'none';
         sun.style.display = 'block';
-        if (hasComments) {
+        if (hasRemarkComments) {
             window.REMARK42.changeTheme("dark");
+        }
+        if (hasGiscusComments) {
+            setGiscusTheme(theme);
         }
     } else {
         moon.style.display = 'block';
         sun.style.display = 'none';
-        if (hasComments) {
+        if (hasRemarkComments) {
             window.REMARK42.changeTheme("light");
+        }
+        if (hasGiscusComments) {
+            setGiscusTheme(theme);
         }
     }
     localStorage.setItem("theme", theme);
 });
+
+function setGiscusTheme(theme) {
+    var iframe = document.querySelector('.giscus-frame');
+
+    if (iframe) {
+        var url = new URL(iframe.src);
+        url.searchParams.set('theme', theme);
+        iframe.src = url.toString();
+    }
+}
